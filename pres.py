@@ -312,37 +312,31 @@ with col_it:
     st.markdown(f'<div class="sec">Iteration {st.session_state.iteration}</div>', unsafe_allow_html=True)
     p = ' &nbsp;│&nbsp; '
     html = '<div class="iter-box">'
-
     # Forward pass
     html += "<b>Forward pass</b><br>"
     html += f"zₕ₁ = {x1:.3f}·{w['w00']:.3f} + {x2:.3f}·{w['w01']:.3f} - 0.1 = <b>{zh1:.4f}</b> &nbsp;→&nbsp; h₁ = σ(zₕ₁) = <b>{h1:.4f}</b><br>"
     html += f"zₕ₂ = {x1:.3f}·{w['w10']:.3f} + {x2:.3f}·{w['w11']:.3f} - 0.1 = <b>{zh2:.4f}</b> &nbsp;→&nbsp; h₂ = σ(zₕ₂) = <b>{h2:.4f}</b><br>"
-    html += f"z_o = {h1:.4f}·{w['v0']:.3f} + {h2:.4f}·{w['v1']:.3f} - 0.1 = <b>{zo:.4f}</b> &nbsp;→&nbsp; ŷ = σ(z_o) = <b>{yp:.4f}</b><br>"
-
+    html += f"z_o = {h1:.4f}·{w['v0']:.3f} + {h2:.4f}·{w['v1']:.3f} - 0.1 = <b>{zo:.4f}</b> &nbsp;→&nbsp; ŷ = σ(z_o) = <b>{yp:.4f}</b>"
     # Loss
     html += f"<br><b>Loss</b><br>"
-    html += f"L = y - ŷ = {y:.3f} - {yp:.4f} = <b>{loss:.6f}</b><br>"
-
+    html += f"L = y - ŷ = {y:.3f} - {yp:.4f} = <b>{loss:.6f}</b>"
     # Backprop - output layer
     html += "<br><b>Backprop — output layer</b><br>"
     html += f"∂L/∂ŷ = -1<br>"
     html += f"σ'(z_o) = ŷ(1-ŷ) = {yp:.4f}·(1-{yp:.4f}) = <b>{bp['dy_dzo']:.4f}</b><br>"
     html += f"δ_o = ∂L/∂ŷ · σ'(z_o) = -1 · {bp['dy_dzo']:.4f} = <b>{bp['delta_o']:.4f}</b><br>"
     html += f"∂L/∂v₀ = δ_o · h₁ = {bp['delta_o']:.4f} · {h1:.4f} = <b>{bp['ddv0']:.4f}</b><br>"
-    html += f"∂L/∂v₁ = δ_o · h₂ = {bp['delta_o']:.4f} · {h2:.4f} = <b>{bp['ddv1']:.4f}</b><br>"
-
+    html += f"∂L/∂v₁ = δ_o · h₂ = {bp['delta_o']:.4f} · {h2:.4f} = <b>{bp['ddv1']:.4f}</b>"
     # Backprop - hidden layer
     html += "<br><b>Backprop — hidden layer</b><br>"
     html += f"σ'(zₕ₁) = h₁(1-h₁) = {h1:.4f}·(1-{h1:.4f}) = <b>{sig_d(h1):.4f}</b><br>"
     html += f"δ_h₁ = δ_o · v₀ · σ'(zₕ₁) = {bp['delta_o']:.4f} · {w['v0']:.4f} · {sig_d(h1):.4f} = <b>{bp['dh1']:.4f}</b><br>"
     html += f"∂L/∂w₀₀ = δ_h₁ · x₁ = {bp['dh1']:.4f} · {x1:.3f} = <b>{bp['dw00']:.4f}</b><br>"
     html += f"∂L/∂w₀₁ = δ_h₁ · x₂ = {bp['dh1']:.4f} · {x2:.3f} = <b>{bp['dw01']:.4f}</b><br>"
-    
     html += f"<br>σ'(zₕ₂) = h₂(1-h₂) = {h2:.4f}·(1-{h2:.4f}) = <b>{sig_d(h2):.4f}</b><br>"
     html += f"δ_h₂ = δ_o · v₁ · σ'(zₕ₂) = {bp['delta_o']:.4f} · {w['v1']:.4f} · {sig_d(h2):.4f} = <b>{bp['dh2']:.4f}</b><br>"
     html += f"∂L/∂w₁₀ = δ_h₂ · x₁ = {bp['dh2']:.4f} · {x1:.3f} = <b>{bp['dw10']:.4f}</b><br>"
-    html += f"∂L/∂w₁₁ = δ_h₂ · x₂ = {bp['dh2']:.4f} · {x2:.3f} = <b>{bp['dw11']:.4f}</b><br>"
-
+    html += f"∂L/∂w₁₁ = δ_h₂ · x₂ = {bp['dh2']:.4f} · {x2:.3f} = <b>{bp['dw11']:.4f}</b>"
     # Gradient descent
     html += f"<br><b>Gradient descent (η = {lr})</b><br>"
     html += f"v₀_new = {w['v0']:.4f} - {lr}·{bp['ddv0']:.4f} = <b>{w_new['v0']:.4f}</b><br>"
@@ -351,7 +345,6 @@ with col_it:
     html += f"w₀₁_new = {w['w01']:.4f} - {lr}·{bp['dw01']:.4f} = <b>{w_new['w01']:.4f}</b><br>"
     html += f"w₁₀_new = {w['w10']:.4f} - {lr}·{bp['dw10']:.4f} = <b>{w_new['w10']:.4f}</b><br>"
     html += f"w₁₁_new = {w['w11']:.4f} - {lr}·{bp['dw11']:.4f} = <b>{w_new['w11']:.4f}</b><br>"
-
     html += f"<br><b>New loss would be: {y:.3f} - {yp:.4f} = {loss:.6f}</b>"
     html += "</div>"
     
