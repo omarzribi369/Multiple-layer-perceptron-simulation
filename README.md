@@ -2,7 +2,7 @@
 
 An interactive web application that visualizes how a Multilayer Perceptron (MLP) learns through backpropagation. Watch the network update in real-time as you step through training iterations!
 
-![MLP Presentation - Main Interface](images/main_interface.png)
+![MLP Presentation - Main Interface](interface1.png)
 *Main interface showing the network visualization and controls*
 
 ## 🎯 What is this?
@@ -23,7 +23,7 @@ Perfect for students, teachers, or anyone curious about how neural networks actu
 - **Adjustable Parameters** - Change inputs, target values, and learning rate
 - **Visual Feedback** - Colors show positive (green) and negative (red) weights
 
-![MLP Presentation - Calculations Panel](images/calculations_panel.png)
+![MLP Presentation - Calculations Panel](interface2.png)
 *Detailed calculations panel showing every mathematical step*
 
 ## 🚀 Quick Start
