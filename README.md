@@ -28,9 +28,15 @@ Perfect for students, teachers, or anyone curious about how neural networks actu
 
 ## 🚀 Quick Start
 
-### Option 1: Run Locally
+###  Run Locally
 
 1. **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/mlp-presentation.git
 cd mlp-presentation
+2. **Install requirements**
+```bash
+pip install streamlit numpy matplotlib pandas
+3. **Run the app**
+```bash
+streamlit run mlp_presentation.py
