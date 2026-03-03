@@ -33,7 +33,7 @@ Perfect for students, teachers, or anyone curious about how neural networks actu
 1. **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/mlp-presentation.git
-cd mlp-presentation
+cd mlp-presentation ```
 2. **Install requirements**
 ```bash
 pip install streamlit numpy matplotlib pandas
